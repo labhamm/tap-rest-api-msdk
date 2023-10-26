@@ -20,6 +20,7 @@ def flatten_json(obj: dict, except_keys: Optional[list] = None) -> dict:
 
     """
     out = {}
+    print("except_keys ::::: ")
     if not except_keys:
         except_keys = []
 
