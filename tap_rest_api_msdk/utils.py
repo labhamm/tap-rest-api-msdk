@@ -2,6 +2,7 @@
 
 import json
 from typing import Any, Optional
+ 
 
 
 def flatten_json(obj: dict, except_keys: Optional[list] = None) -> dict:
@@ -19,8 +20,7 @@ def flatten_json(obj: dict, except_keys: Optional[list] = None) -> dict:
         A flattened json object.
 
     """
-    out = {}
-    print("except_keys ::::: ")
+    out = {}     
     if not except_keys:
         except_keys = []
 
@@ -49,9 +49,9 @@ def flatten_json(obj: dict, except_keys: Optional[list] = None) -> dict:
         """
         if type(o) is dict:
             for k in o:
-                # the key is in the list of keys to skip, convert to json string
+                # the key is in the list of keys to skip, convert to json string                
                 if name + k in exception_keys:
-                    out[t(name + k)] = json.dumps(o[k])
+                    flatten(o[k], name + k + "_")
                 else:
                     flatten(o[k], exception_keys, name + k + "_")
 
